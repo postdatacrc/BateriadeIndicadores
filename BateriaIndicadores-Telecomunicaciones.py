@@ -528,7 +528,7 @@ st.markdown("""<style type="text/css">
     .css-52bwht{
         gap:0.01rem;
     }
-    .css-1siy2j7{background-color:rgba(224,224,224,0.7)}
+    .e1fqkh3o3{background-color:rgba(224,224,224,0.7)}
     .css-y3whyl, .css-xqnn38 {background-color:#ccc}
     .css-1uvyptr:hover,.css-1uvyptr {background: #ccc}
     .block-container {padding-top:0;}
