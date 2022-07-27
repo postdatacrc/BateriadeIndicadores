@@ -488,53 +488,70 @@ st.markdown(
     unsafe_allow_html=True)   
 st.markdown("""<style type="text/css">
     h1{ background: #ffde00;
-    text-align: center;
-    padding: 15px;
-    font-family: sans-serif;
-    font-size:1.60rem;
-    color: black;
-    position:fixed;
-    width:100%;
-    z-index:9999;
-    top:80px;
-    left:0;}
+        text-align: center;
+        padding: 15px;
+        font-family: sans-serif;
+        font-size:1.60rem;
+        color: black;
+        position:fixed;
+        width:100%;
+        z-index:99999999999;
+        top:80px;
+        left:0;
+    }
     .css-m70y {display:none}
     .barra-superior{top: 0;
-    position: fixed;
-    background-color: #27348b;
-    width: 100%;
-    color:white;
-    z-index: 999;
-    height: 80px;
-    left: 0px;
-    text-align: center;
-    padding: 0px;
-    font-size: 36px;
-    font-weight: 700;
+        position: fixed;
+        background-color: #27348b;
+        width: 100%;
+        color:white;
+        z-index: 999;
+        height: 80px;
+        left: 0px;
+        text-align: center;
+        padding: 0px;
+        font-size: 36px;
+        font-weight: 700;
     }
-    .main, .css-1lcbmhc > div{margin-top:135px;}
+    .css-1wrcr25{
+        margin-top:135px;
+    }
+    .css-ocqkz7 {text-align:center}
+    .e16nr0p31 {display:none}
+    .css-y3whyl, .css-xqnn38 {background-color:#ccc}
+    .e8zbici0 {display:none}
+    .e8zbici2 {display:none}
+    .css-1uvyptr:hover,.css-1uvyptr {background: #ccc}
+    .e1fqkh3o2{
+        padding-top:2.5rem;   
+    }
+    .css-52bwht{
+        gap:0.01rem;
+    }
+    .css-1siy2j7{background-color:rgba(224,224,224,0.7)}
     .css-y3whyl, .css-xqnn38 {background-color:#ccc}
     .css-1uvyptr:hover,.css-1uvyptr {background: #ccc}
     .block-container {padding-top:0;}
     h2{
-    background: #fffdf7;
-    text-align: center;
-    padding: 10px;
-    text-decoration: underline;
-    text-decoration-style: double;
-    color: #27348b;}
+        background: #fffdf7;
+        text-align: center;
+        padding: 10px;
+        text-decoration: underline;
+        text-decoration-style: double;
+        color: #27348b;
+    }
     h3{ border-bottom: 2px solid #27348b;
-    border-left: 10px solid #27348b;
-    background: #fffdf7;
-    padding: 10px;
-    color: black;}
+        border-left: 10px solid #27348b;
+        background: #fffdf7;
+        padding: 10px;
+        color: black;
+    }
     .imagen-flotar{float:left;}
     @media (max-width:1230px){
         .barra-superior{height:160px;} 
-        .main, .css-1lcbmhc > div{margin-top:215px;}
+        .main, .e1fqkh3o9 > div{margin-top:215px;}
         .imagen-flotar{float:none}
-        h1{top:160px;}
-    }    
+        h1{top:160px;}}   
     </style>""", unsafe_allow_html=True)  
 st.markdown("""
 <div class="barra-superior">
