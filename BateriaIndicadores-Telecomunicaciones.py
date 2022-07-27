@@ -810,7 +810,7 @@ def ReadApiIMIng():
 def ReadApiIMAccesos():
     resourceid_cf = '47d07e20-b257-4aaf-9309-1501c75a826c'
     consulta_cf='https://www.postdata.gov.co/api/action/datastore/search.json?resource_id=' + resourceid_cf + ''\
-                '&filters[anno]=' + consulta_anno + ''\
+                '&filters[anno]=' + '2018,2019,2020,2021,2022,2023' + ''+'&filters[mes_del_trimestre]=3'\
                 '&fields[]=anno&fields[]=trimestre&fields[]=id_empresa&fields[]=empresa'\
                 '&group_by=anno,trimestre,id_empresa,empresa'\
                 '&sum=cantidad_suscriptores' 
@@ -820,7 +820,7 @@ def ReadApiIMAccesos():
     IMCF_SUS.sum_cantidad_suscriptores = IMCF_SUS.sum_cantidad_suscriptores.astype('int64')
     resourceid_dda = '3df620f6-deec-42a0-a6af-44ca23c2b73c'
     consulta_dda='https://www.postdata.gov.co/api/action/datastore/search.json?resource_id=' + resourceid_dda + ''\
-                '&filters[anno]=' + consulta_anno + ''\
+                '&filters[anno]=' + '2018,2019,2020,2021,2022,2023' + ''+'&filters[mes_del_trimestre]=3'\
                 '&fields[]=anno&fields[]=trimestre&fields[]=id_empresa&fields[]=empresa'\
                 '&group_by=anno,trimestre,id_empresa,empresa'\
                 '&sum=cantidad_abonados' 
@@ -830,7 +830,7 @@ def ReadApiIMAccesos():
     IMDDA_ABO.sum_cantidad_abonados = IMDDA_ABO.sum_cantidad_abonados.astype('int64')
     IM_ACCESOS=IMDDA_ABO.merge(IMCF_SUS, on=['anno','trimestre','id_empresa','empresa'])
     IM_ACCESOS['accesos']=IM_ACCESOS['sum_cantidad_suscriptores'].fillna(0)+IM_ACCESOS['sum_cantidad_abonados']
-    IM_ACCESOS.drop(columns=['sum_cantidad_suscriptores','sum_cantidad_abonados'], inplace=True)
+    #IM_ACCESOS.drop(columns=['sum_cantidad_suscriptores','sum_cantidad_abonados'], inplace=True)
     return IM_ACCESOS
     
 @st.cache(allow_output_mutation=True) 
