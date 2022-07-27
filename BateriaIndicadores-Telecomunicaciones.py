@@ -698,7 +698,7 @@ def ReadApiTVSUSSus():
     json_base = json.loads(response_base.read())
     TV_SUS = pd.DataFrame(json_base['result']['records'])
     TV_SUS.sum_suscriptores = TV_SUS.sum_suscriptores.astype('int64')
-    TV_SUS = TV_SUS.rename(columns={'id_operador':'id_empresa','nombre_operador':'empresa','sum_suscriptores':'suscriptores'})
+    TV_SUS = TV_SUS.rename(columns={'id_operador':'id_empresa','operador':'empresa','sum_suscriptores':'suscriptores'})
     return TV_SUS  
         
 ## TELEFONÍA MÓVIL
