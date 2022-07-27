@@ -5129,7 +5129,7 @@ if select_mercado == 'Internet móvil':
     Trafnac=Trafico.groupby(['periodo','empresa','id_empresa'])['trafico'].sum().reset_index()
     Ingnac=Ingresos.groupby(['periodo','empresa','id_empresa'])['ingresos'].sum().reset_index()
     Accnac=Accesos.groupby(['periodo','empresa','id_empresa'])['accesos'].sum().reset_index()    
-    PERIODOS=Trafico['periodo'].unique().tolist()    
+    PERIODOS=Accesos['periodo'].unique().tolist()    
     dfTrafico=[];dfIngresos=[];dfAccesos=[]
     dfTrafico2=[];dfIngresos2=[];dfAccesos2=[]
     dfTrafico3=[];dfIngresos3=[];dfAccesos3=[]
