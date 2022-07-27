@@ -200,7 +200,7 @@ def PlotlyConcentracion(df):
     'x':0.5,
     'xanchor': 'center',
     'yanchor': 'top'})    
-    fig.update_xaxes(tickfont=dict(family='Boston', color='black', size=12),title_text=None,row=1, col=1,ticks="outside", tickwidth=1, tickcolor='black', ticklen=5,
+    fig.update_xaxes(tickangle=-90, tickfont=dict(family='Boston', color='black', size=12),title_text=None,row=1, col=1,ticks="outside", tickwidth=1, tickcolor='black', ticklen=5,
     zeroline=True,linecolor = "#000000",zerolinewidth=2,  
     showgrid = True, 
     showline = True,
@@ -237,7 +237,7 @@ def PlotlyIHH(df):
                          hovertemplate =
         '<br><b>Periodo</b>: %{x}<br>'+                         
         '<br><b>IHH</b>: %{y:.4f}<br>',name=''))
-    fig.update_xaxes(tickangle=0, tickfont=dict(family='Boston', color='black', size=12),title_text=None,row=1, col=1,ticks="outside", tickwidth=1, tickcolor='black', ticklen=5,
+    fig.update_xaxes(tickangle=-90, tickfont=dict(family='Boston', color='black', size=12),title_text=None,row=1, col=1,ticks="outside", tickwidth=1, tickcolor='black', ticklen=5,
     zeroline=True,linecolor = "#000000",zerolinewidth=2,  
     showgrid = True, 
     showline = True,
@@ -284,7 +284,7 @@ def PlotlyDominancia(df):
         '<br><b>Dominancia</b>: %{y:.4f}<br>',name=''))
     fig.update_layout(height=550,legend_title=None)
     fig.update_layout(showlegend=False,paper_bgcolor='rgba(0,0,0,0)',plot_bgcolor='rgba(0,0,0,0)')
-    fig.update_xaxes(tickangle=0, tickfont=dict(family='Boston', color='black', size=12),title_text=None,row=1, col=1,ticks="outside", tickwidth=1, tickcolor='black', ticklen=5,
+    fig.update_xaxes(tickangle=-90, tickfont=dict(family='Boston', color='black', size=12),title_text=None,row=1, col=1,ticks="outside", tickwidth=1, tickcolor='black', ticklen=5,
     zeroline=True,linecolor = "#000000",zerolinewidth=2,  
     showgrid = True, 
     showline = True,
@@ -317,7 +317,7 @@ def PlotlyPenetracion(df):
         '<br><b>Penetración</b>: %{y:.4f}<br>',name=''))
     fig.update_layout(height=550,legend_title=None)
     fig.update_layout(showlegend=False,paper_bgcolor='rgba(0,0,0,0)',plot_bgcolor='rgba(0,0,0,0)')
-    fig.update_xaxes(tickangle=0, tickfont=dict(family='Boston', color='black', size=12),title_text=None,row=1, col=1,ticks="outside", tickwidth=1, tickcolor='black', ticklen=5,
+    fig.update_xaxes(tickangle=-90, tickfont=dict(family='Boston', color='black', size=12),title_text=None,row=1, col=1,ticks="outside", tickwidth=1, tickcolor='black', ticklen=5,
     zeroline=True,linecolor = "#000000",zerolinewidth=2,  
     showgrid = True, 
     showline = True,
@@ -351,7 +351,7 @@ def PlotlyMEntropica(df):
         '<br><b>MEDIA ENTROPICA</b>: %{y:.4f}<br>')) 
     fig.update_layout(height=550,legend_title=None)
     fig.update_layout(showlegend=False,paper_bgcolor='rgba(0,0,0,0)',plot_bgcolor='rgba(0,0,0,0)')
-    fig.update_xaxes(tickangle=0, tickfont=dict(family='Boston', color='black', size=12),title_text=None,row=1, col=1,ticks="outside", tickwidth=1, tickcolor='black', ticklen=5,
+    fig.update_xaxes(tickangle=-90, tickfont=dict(family='Boston', color='black', size=12),title_text=None,row=1, col=1,ticks="outside", tickwidth=1, tickcolor='black', ticklen=5,
     zeroline=True,linecolor = "#000000",zerolinewidth=2,  
     showgrid = True, 
     showline = True,
@@ -395,7 +395,7 @@ def PlotlyLinda(df):
     fig.add_trace(go.Bar(x=df['periodo'], y=flatten(df.iloc[:, [lind-1]].values),hovertemplate =
     '<br><b>Periodo</b>: %{x}<br>'+                         
     '<br><b>Linda</b>: %{y:.4f}<br>',name=''))
-    fig.update_xaxes(tickangle=0, tickfont=dict(family='Boston', color='black', size=12),title_text=None,row=1, col=1,ticks="outside", tickwidth=1, tickcolor='black', ticklen=5,
+    fig.update_xaxes(tickangle=-90, tickfont=dict(family='Boston', color='black', size=12),title_text=None,row=1, col=1,ticks="outside", tickwidth=1, tickcolor='black', ticklen=5,
     zeroline=True,linecolor = "#000000",zerolinewidth=2,  
     showgrid = True, 
     showline = True,
@@ -429,7 +429,7 @@ def PlotlyLinda2(df):
     '<br><b>Linda</b>: %{y:.4f}<br>',name=''))
     fig.update_layout(height=550,legend_title=None)
     fig.update_layout(showlegend=False,paper_bgcolor='rgba(0,0,0,0)',plot_bgcolor='rgba(0,0,0,0)')
-    fig.update_xaxes(tickangle=0, tickfont=dict(family='Boston', color='black', size=12),title_text=None,row=1, col=1,ticks="outside", tickwidth=1, tickcolor='black', ticklen=5,
+    fig.update_xaxes(tickangle=-90, tickfont=dict(family='Boston', color='black', size=12),title_text=None,row=1, col=1,ticks="outside", tickwidth=1, tickcolor='black', ticklen=5,
     zeroline=True,linecolor = "#000000",zerolinewidth=2,  
     showgrid = True, 
     showline = True,
@@ -643,54 +643,72 @@ st.markdown(
     unsafe_allow_html=True)   
 st.markdown("""<style type="text/css">
     h1{ background: #ffde00;
-    text-align: center;
-    padding: 15px;
-    font-family: sans-serif;
-    font-size:1.60rem;
-    color: black;
-    position:fixed;
-    width:100%;
-    z-index:9999;
-    top:80px;
-    left:0;}
-    .barra-superior{top: 0;
-    position: fixed;
-    background-color: #27348b;
-    width: 100%;
-    color:white;
-    z-index: 999;
-    height: 80px;
-    left: 0px;
-    text-align: center;
-    padding: 0px;
-    font-size: 36px;
-    font-weight: 700;
+        text-align: center;
+        padding: 15px;
+        font-family: sans-serif;
+        font-size:1.60rem;
+        color: black;
+        position:fixed;
+        width:100%;
+        z-index:99999999999;
+        top:80px;
+        left:0;
     }
-    .main, .css-1lcbmhc > div{margin-top:135px;}
+    .css-m70y {display:none}
+    .barra-superior{top: 0;
+        position: fixed;
+        background-color: #27348b;
+        width: 100%;
+        color:white;
+        z-index: 999;
+        height: 80px;
+        left: 0px;
+        text-align: center;
+        padding: 0px;
+        font-size: 36px;
+        font-weight: 700;
+    }
+    .css-1wrcr25{
+        margin-top:135px;
+    }
+    .css-ocqkz7 {text-align:center}
+    .e16nr0p31 {display:none}
+    .css-y3whyl, .css-xqnn38 {background-color:#ccc}
+    .e8zbici0 {display:none}
+    .e8zbici2 {display:none}
+    .css-1uvyptr:hover,.css-1uvyptr {background: #ccc}
+    .e1fqkh3o2{
+        padding-top:2.5rem;   
+    }
+    .css-52bwht{
+        gap:0.01rem;
+    }
+    .e1fqkh3o3{background-color:rgba(224,224,224,0.7)}
     .css-y3whyl, .css-xqnn38 {background-color:#ccc}
     .css-1uvyptr:hover,.css-1uvyptr {background: #ccc}
-    .css-m70y {display:none}
     .block-container {padding-top:0;}
     h2{
-    background: #fffdf7;
-    text-align: center;
-    padding: 10px;
-    text-decoration: underline;
-    text-decoration-style: double;
-    color: #27348b;}
+        background: #fffdf7;
+        text-align: center;
+        padding: 10px;
+        text-decoration: underline;
+        text-decoration-style: double;
+        color: #27348b;
+    }
     h3{ border-bottom: 2px solid #27348b;
-    border-left: 10px solid #27348b;
-    background: #fffdf7;
-    padding: 10px;
-    color: black;}
+        border-left: 10px solid #27348b;
+        background: #fffdf7;
+        padding: 10px;
+        color: black;
+    }
     .imagen-flotar{float:left;}
     @media (max-width:1230px){
         .barra-superior{height:160px;} 
-        .main, .css-1lcbmhc > div{margin-top:215px;}
+        .main, .e1fqkh3o9 > div{margin-top:215px;}
         .imagen-flotar{float:none}
-        h1{top:160px;}
-    }    
+        h1{top:160px;}}   
     </style>""", unsafe_allow_html=True)  
+  
 st.markdown("""
 <div class="barra-superior">
     <div class="imagen-flotar" style="height: 70px; left: 10px; padding:15px">
@@ -729,6 +747,9 @@ MenExp=loadMExpresa()
 MenExp.NUMERO_TOTAL_ENVIOS=MenExp.NUMERO_TOTAL_ENVIOS.astype(str).str.replace(',','.').astype('float').astype('int64')
 MenExp.INGRESOS=MenExp.INGRESOS.astype(str).str.replace(',','.').astype('float')
 Correo.INGRESOS=Correo.INGRESOS.astype(str).str.replace(',','.').astype('float')
+
+MenExp=MenExp[MenExp['ANNO']==2021]
+Correo=Correo[Correo['ANNO']==2021]
 
 Postales=pd.concat([Correo,MenExp])
 Postales.columns=[x.lower() for x in Postales.columns]
