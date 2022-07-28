@@ -472,10 +472,10 @@ st.set_page_config(
     page_title="Batería de indicadores telecomunicaciones", page_icon=LogoComision,layout="wide",initial_sidebar_state="expanded")
 
 
-st.markdown("""<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">""",unsafe_allow_html=True)     
-st.markdown(
-    """
-    <style>
+  
+st.markdown("""
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style type="text/css">
     [data-testid="stSidebar"][aria-expanded="true"] > div:first-child {
         width: 250px;
     }
@@ -483,10 +483,6 @@ st.markdown(
         width: 250px;
         margin-left: -250px;
     }
-    </style>
-    """,
-    unsafe_allow_html=True)   
-st.markdown("""<style type="text/css">
     h1{ background: #ffde00;
         text-align: center;
         padding: 15px;
@@ -528,7 +524,8 @@ st.markdown("""<style type="text/css">
     .css-52bwht{
         gap:0.01rem;
     }
-    .e1fqkh3o3{background-color:rgba(224,224,224,0.7)}
+    .e1fqkh3o0{position:absolute}
+    .e1fqkh3o3{background-color:rgb(224,224,224)}
     .css-y3whyl, .css-xqnn38 {background-color:#ccc}
     .css-1uvyptr:hover,.css-1uvyptr {background: #ccc}
     .block-container {padding-top:0;}
@@ -549,7 +546,7 @@ st.markdown("""<style type="text/css">
     .imagen-flotar{float:left;}
     @media (max-width:1230px){
         .barra-superior{height:160px;} 
-        .main, .e1fqkh3o9 > div{margin-top:215px;}
+        .main, .e1fqkh3o9 > div{margin-top:80px;}
         .imagen-flotar{float:none}
         h1{top:160px;}}   
     </style>""", unsafe_allow_html=True)  
