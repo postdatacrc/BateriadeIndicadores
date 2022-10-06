@@ -673,14 +673,14 @@ def ReadApiTVSUSIng():
     resourceid = '1033b0f2-8107-4e04-ae33-8b12882b762d'
     consulta='https://www.postdata.gov.co/api/action/datastore/search.json?resource_id=' + resourceid + ''\
              '&filters[anno]=' + consulta_anno + ''\
-             '&fields[]=anno&fields[]=trimestre&fields[]=id_empresa&fields[]=desc_empresa'\
-             '&group_by=anno,trimestre,id_empresa,desc_empresa'\
+             '&fields[]=anno&fields[]=trimestre&fields[]=id_empresa&fields[]=empresa'\
+             '&group_by=anno,trimestre,id_empresa,empresa'\
              '&sum=ingresos' 
     response_base = urlopen(consulta + '&limit=10000000') 
     json_base = json.loads(response_base.read())
     TVSUS_ING = pd.DataFrame(json_base['result']['records'])
     TVSUS_ING.sum_ingresos = TVSUS_ING.sum_ingresos.astype('float').astype('int64')
-    TVSUS_ING = TVSUS_ING.rename(columns={'sum_ingresos':'ingresos','desc_empresa':'empresa'})
+    TVSUS_ING = TVSUS_ING.rename(columns={'sum_ingresos':'ingresos'})
     return TVSUS_ING
    ####SUSCRIPTORES
 @st.cache(allow_output_mutation=True)    
@@ -688,14 +688,14 @@ def ReadApiTVSUSSus():
     resourceid = '0c4b69a7-734d-432c-9d9b-9dc600d50391'
     consulta='https://www.postdata.gov.co/api/action/datastore/search.json?resource_id=' + resourceid + ''\
              '&filters[mes]=3,6,9,12&filters[anno]=' + consulta_anno + ''\
-             '&fields[]=anno&fields[]=mes&fields[]=id_empresa&fields[]=desc_empresa&fields[]=id_departamento&fields[]=departamento&fields[]=id_municipio&fields[]=municipio'\
-             '&group_by=anno,mes,id_dempresa,desc_empresa,id_departamento,departamento,id_municipio,municipio'\
+             '&fields[]=anno&fields[]=mes&fields[]=id_empresa&fields[]=empresa&fields[]=id_departamento&fields[]=departamento&fields[]=id_municipio&fields[]=municipio'\
+             '&group_by=anno,mes,id_dempresa,empresa,id_departamento,departamento,id_municipio,municipio'\
              '&sum=suscriptores' 
     response_base = urlopen(consulta + '&limit=10000000') 
     json_base = json.loads(response_base.read())
     TV_SUS = pd.DataFrame(json_base['result']['records'])
     TV_SUS.sum_suscriptores = TV_SUS.sum_suscriptores.astype('int64')
-    TV_SUS = TV_SUS.rename(columns={'desc_empresa':'empresa','sum_suscriptores':'suscriptores'})
+    TV_SUS = TV_SUS.rename(columns={'sum_suscriptores':'suscriptores'})
     return TV_SUS  
         
 ## TELEFONÍA MÓVIL
