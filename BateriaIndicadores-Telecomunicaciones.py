@@ -687,9 +687,9 @@ def ReadApiTVSUSIng():
 def ReadApiTVSUSSus():
     resourceid = '0c4b69a7-734d-432c-9d9b-9dc600d50391'
     consulta='https://www.postdata.gov.co/api/action/datastore/search.json?resource_id=' + resourceid + ''\
-             '&filters[mes]=3,6,9,12&filters[anno]=' + consulta_anno + ''\
-             '&fields[]=anno&fields[]=mes&fields[]=id_empresa&fields[]=empresa&fields[]=id_departamento&fields[]=departamento&fields[]=id_municipio&fields[]=municipio'\
-             '&group_by=anno,mes,id_dempresa,empresa,id_departamento,departamento,id_municipio,municipio'\
+             '&filters[mes_del_trimestre]=3&filters[anno]=' + consulta_anno + ''\
+             '&fields[]=anno&fields[]=trimestre&fields[]=id_empresa&fields[]=empresa&fields[]=id_departamento&fields[]=departamento&fields[]=id_municipio&fields[]=municipio'\
+             '&group_by=anno,trimestre,id_empresa,empresa,id_departamento,departamento,id_municipio,municipio'\
              '&sum=suscriptores' 
     response_base = urlopen(consulta + '&limit=10000000') 
     json_base = json.loads(response_base.read())
