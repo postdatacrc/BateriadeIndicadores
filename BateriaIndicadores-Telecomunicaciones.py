@@ -3970,7 +3970,6 @@ if select_mercado == "Televisión por suscripción":
     IngresosTV=ReadApiTVSUSIng() 
     SuscriptoresTV=ReadApiTVSUSSus()
     SuscriptoresTV.departamento.replace({'BOGOTÁ, D.C.':'BOGOTÁ D.C.','CAQUETA':'CAQUETÁ'},inplace=True)
-    SuscriptoresTV['trimestre']=(SuscriptoresTV['mes'].astype('int64')-1)//3 +1  
     SuscriptoresTV['periodo']=SuscriptoresTV['anno']+'-T'+SuscriptoresTV['trimestre'].astype('str')
     IngresosTV['periodo']=IngresosTV['anno']+'-T'+IngresosTV['trimestre']
 
