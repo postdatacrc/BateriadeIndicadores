@@ -469,7 +469,7 @@ LogoMercadoTIC="https://upload.wikimedia.org/wikipedia/commons/4/41/Noun_project
 # Set page title and favicon.
 
 st.set_page_config(
-    page_title="Batería de indicadores telecomunicaciones", page_icon=LogoComision,layout="wide",initial_sidebar_state="expanded")
+    page_title="Batería de indicadores telecomunicaciones", page_icon=LogoComision,layout="wide",initial__state="expanded")
 
 
   
@@ -477,10 +477,8 @@ st.markdown("""
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style type="text/css">
     [data-testid="stSidebar"][aria-expanded="true"] > div:first-child {
-        width: 250px;
     }
-    [data-testid="stSidebar"][aria-expanded="false"] > div:first-child {
-        width: 250px;
+    [data-testid="stSidebar"][aria-expanded="false"] > div:first-child {      
         margin-left: -250px;
     }
     h1{ background: #ffde00;
