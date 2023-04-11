@@ -477,10 +477,8 @@ st.markdown("""
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style type="text/css">
     [data-testid="stSidebar"][aria-expanded="true"] > div:first-child {
-        width: 250px;
     }
     [data-testid="stSidebar"][aria-expanded="false"] > div:first-child {
-        width: 250px;
         margin-left: -250px;
     }
     h1{ background: #ffde00;
