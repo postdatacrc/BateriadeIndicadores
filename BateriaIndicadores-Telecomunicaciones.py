@@ -477,8 +477,10 @@ st.markdown("""
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style type="text/css">
     [data-testid="stSidebar"][aria-expanded="true"] > div:first-child {
+        width: 250px;
     }
-    [data-testid="stSidebar"][aria-expanded="false"] > div:first-child {      
+    [data-testid="stSidebar"][aria-expanded="false"] > div:first-child {
+        width: 250px;
         margin-left: -250px;
     }
     h1{ background: #ffde00;
@@ -671,31 +673,29 @@ def ReadApiTVSUSIng():
     resourceid = '1033b0f2-8107-4e04-ae33-8b12882b762d'
     consulta='https://www.postdata.gov.co/api/action/datastore/search.json?resource_id=' + resourceid + ''\
              '&filters[anno]=' + consulta_anno + ''\
-             '&fields[]=anno&fields[]=trimestre&fields[]=id_empresa&fields[]=empresa'\
-             '&group_by=anno,trimestre,id_empresa,empresa'\
-             '&sum[]=ingresos_brutos_operacionales&sum[]=ingr_brutos_pauta_publicitaria' 
+             '&fields[]=anno&fields[]=trimestre&fields[]=id_empresa&fields[]=desc_empresa'\
+             '&group_by=anno,trimestre,id_empresa,desc_empresa'\
+             '&sum=ingresos' 
     response_base = urlopen(consulta + '&limit=10000000') 
     json_base = json.loads(response_base.read())
     TVSUS_ING = pd.DataFrame(json_base['result']['records'])
-    TVSUS_ING.sum_ingresos_brutos_operacionales = TVSUS_ING.sum_ingresos_brutos_operacionales.astype('float').astype('int64')
-    TVSUS_ING.sum_ingr_brutos_pauta_publicitaria = TVSUS_ING.sum_ingr_brutos_pauta_publicitaria.astype('float').astype('int64')
-    TVSUS_ING = TVSUS_ING.rename(columns={'sum_ingresos_brutos_operacionales':'ingresos_brutos_operacionales','sum_ingr_brutos_pauta_publicitaria':'ingresos_pauta_publicitaria'})
-    TVSUS_ING['ingresos']=TVSUS_ING['ingresos_brutos_operacionales']+TVSUS_ING['ingresos_pauta_publicitaria']
+    TVSUS_ING.sum_ingresos = TVSUS_ING.sum_ingresos.astype('float').astype('int64')
+    TVSUS_ING = TVSUS_ING.rename(columns={'sum_ingresos':'ingresos','desc_empresa':'empresa'})
     return TVSUS_ING
    ####SUSCRIPTORES
 @st.cache(allow_output_mutation=True)    
 def ReadApiTVSUSSus():
     resourceid = '0c4b69a7-734d-432c-9d9b-9dc600d50391'
     consulta='https://www.postdata.gov.co/api/action/datastore/search.json?resource_id=' + resourceid + ''\
-             '&filters[mes_del_trimestre]=3&filters[anno]=' + consulta_anno + ''\
-             '&fields[]=anno&fields[]=trimestre&fields[]=id_empresa&fields[]=empresa&fields[]=id_departamento&fields[]=departamento&fields[]=id_municipio&fields[]=municipio'\
-             '&group_by=anno,trimestre,id_empresa,empresa,id_departamento,departamento,id_municipio,municipio'\
+             '&filters[mes_del_trimestre]=3,6,9,12&filters[anno]=' + consulta_anno + ''\
+             '&fields[]=anno&fields[]=mes&fields[]=id_operador&fields[]=operador&fields[]=id_departamento&fields[]=departamento&fields[]=id_municipio&fields[]=municipio'\
+             '&group_by=anno,mes,id_operador,operador,id_departamento,departamento,id_municipio,municipio'\
              '&sum=suscriptores' 
     response_base = urlopen(consulta + '&limit=10000000') 
     json_base = json.loads(response_base.read())
     TV_SUS = pd.DataFrame(json_base['result']['records'])
     TV_SUS.sum_suscriptores = TV_SUS.sum_suscriptores.astype('int64')
-    TV_SUS = TV_SUS.rename(columns={'sum_suscriptores':'suscriptores'})
+    TV_SUS = TV_SUS.rename(columns={'id_operador':'id_empresa','operador':'empresa','sum_suscriptores':'suscriptores'})
     return TV_SUS  
         
 ## TELEFONÍA MÓVIL
@@ -721,14 +721,14 @@ def ReadApiVOZIng():
     resourceid = '43f0d3a9-cd5c-4f22-a996-74eae6cba9a3'
     consulta='https://www.postdata.gov.co/api/action/datastore/search.json?resource_id=' + resourceid + ''\
              '&filters[anno]=' + '2017,2018,2019,2020,2021,2022,2023,2024,2025' + ''\
-             '&fields[]=anno&fields[]=trimestre&fields[]=id_empresa&fields[]=empresa'\
-             '&group_by=anno,trimestre,id_empresa,empresa'\
+             '&fields[]=anno&fields[]=trimestre&fields[]=id_empresa&fields[]=desc_empresa'\
+             '&group_by=anno,trimestre,id_empresa,desc_empresa'\
              '&sum=ingresos_totales' 
     response_base = urlopen(consulta + '&limit=10000000') 
     json_base = json.loads(response_base.read())
     VOZ_ING = pd.DataFrame(json_base['result']['records'])
     VOZ_ING.sum_ingresos_totales = VOZ_ING.sum_ingresos_totales.astype('int64')
-    VOZ_ING = VOZ_ING.rename(columns={'sum_ingresos_totales':'ingresos'})
+    VOZ_ING = VOZ_ING.rename(columns={'sum_ingresos_totales':'ingresos','desc_empresa':'empresa'})
     return VOZ_ING
     #ABONADOS
 @st.cache(allow_output_mutation=True)  
@@ -3970,6 +3970,7 @@ if select_mercado == "Televisión por suscripción":
     IngresosTV=ReadApiTVSUSIng() 
     SuscriptoresTV=ReadApiTVSUSSus()
     SuscriptoresTV.departamento.replace({'BOGOTÁ, D.C.':'BOGOTÁ D.C.','CAQUETA':'CAQUETÁ'},inplace=True)
+    SuscriptoresTV['trimestre']=(SuscriptoresTV['mes'].astype('int64')-1)//3 +1  
     SuscriptoresTV['periodo']=SuscriptoresTV['anno']+'-T'+SuscriptoresTV['trimestre'].astype('str')
     IngresosTV['periodo']=IngresosTV['anno']+'-T'+IngresosTV['trimestre']
 
