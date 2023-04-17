@@ -686,15 +686,15 @@ def ReadApiTVSUSSus():
     resourceid = '0c4b69a7-734d-432c-9d9b-9dc600d50391'
     consulta='https://www.postdata.gov.co/api/action/datastore/search.json?resource_id=' + resourceid + ''\
              '&filters[mes_del_trimestre]=3,6,9,12&filters[anno]=' + consulta_anno + ''\
-             '&fields[]=anno&fields[]=mes&fields[]=id_operador&fields[]=operador&fields[]=id_departamento&fields[]=departamento&fields[]=id_municipio&fields[]=municipio'\
-             '&group_by=anno,mes,id_operador,operador,id_departamento,departamento,id_municipio,municipio'\
+             '&fields[]=anno&fields[]=trimestre&fields[]=id_empresa&fields[]=empresa&fields[]=id_departamento&fields[]=departamento&fields[]=id_municipio&fields[]=municipio'\
+             '&group_by=anno,trimestre,id_empresa,empresa,id_departamento,departamento,id_municipio,municipio'\
              '&sum=suscriptores' 
     response_base = urlopen(consulta + '&limit=10000000') 
     json_base = json.loads(response_base.read())
     TV_SUS = pd.DataFrame(json_base['result']['records'])
     TV_SUS.sum_suscriptores = TV_SUS.sum_suscriptores.astype('int64')
     TV_SUS = TV_SUS.rename(columns={'id_operador':'id_empresa','operador':'empresa','sum_suscriptores':'suscriptores'})
-    return TV_SUS  
+    return TV_SUS 
         
 ## TELEFONÍA MÓVIL
     #TRÁFICO:
