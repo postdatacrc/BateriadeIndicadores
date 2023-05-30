@@ -643,7 +643,7 @@ def ReadApiINTFAccesos():
         response_base = urlopen(consulta + '&limit=10000000') 
         json_base = json.loads(response_base.read())
         ACCESOS = pd.DataFrame(json_base['result']['records'])
-        INTF_ACCESOS = INTF_ACCESOS.append(ACCESOS)
+        INTF_ACCESOS = pd.concat([INTF_ACCESOS,ACCESOS])
     INTF_ACCESOS.sum_accesos = INTF_ACCESOS.sum_accesos.astype('int64')
     INTF_ACCESOS = INTF_ACCESOS.rename(columns={'sum_accesos':'accesos'})
     return INTF_ACCESOS 
@@ -842,7 +842,7 @@ def ReadApiINTFAccesosCorp():
         response_base = urlopen(consulta + '&limit=10000000') 
         json_base = json.loads(response_base.read())
         ACCESOS = pd.DataFrame(json_base['result']['records'])
-        INTF_ACCESOS = INTF_ACCESOS.append(ACCESOS)
+        INTF_ACCESOS = pd.concat([INTF_ACCESOS,ACCESOS])
     INTF_ACCESOS.sum_accesos = INTF_ACCESOS.sum_accesos.astype('int64')
     INTF_ACCESOS = INTF_ACCESOS.rename(columns={'sum_accesos':'accesos'})
     return INTF_ACCESOS
@@ -860,7 +860,7 @@ def ReadApiINTFAccesosRes():
         response_base = urlopen(consulta + '&limit=10000000') 
         json_base = json.loads(response_base.read())
         ACCESOS = pd.DataFrame(json_base['result']['records'])
-        INTF_ACCESOS = INTF_ACCESOS.append(ACCESOS)
+        INTF_ACCESOS = pd.concat([INTF_ACCESOS,ACCESOS])
     INTF_ACCESOS.sum_accesos = INTF_ACCESOS.sum_accesos.astype('int64')
     INTF_ACCESOS = INTF_ACCESOS.rename(columns={'sum_accesos':'accesos'})
     return INTF_ACCESOS
