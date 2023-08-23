@@ -719,8 +719,8 @@ def ReadApiVOZIng():
     resourceid = '43f0d3a9-cd5c-4f22-a996-74eae6cba9a3'
     consulta='https://www.postdata.gov.co/api/action/datastore/search.json?resource_id=' + resourceid + ''\
              '&filters[anno]=' + '2017,2018,2019,2020,2021,2022,2023,2024,2025' + ''\
-             '&fields[]=anno&fields[]=trimestre&fields[]=id_empresa&fields[]=desc_empresa'\
-             '&group_by=anno,trimestre,id_empresa,desc_empresa'\
+             '&fields[]=anno&fields[]=trimestre&fields[]=id_empresa&fields[]=empresa'\
+             '&group_by=anno,trimestre,id_empresa,empresa'\
              '&sum=ingresos_totales' 
     response_base = urlopen(consulta + '&limit=10000000') 
     json_base = json.loads(response_base.read())
