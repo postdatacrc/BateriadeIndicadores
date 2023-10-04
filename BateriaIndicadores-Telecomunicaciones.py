@@ -866,7 +866,7 @@ def ReadApiINTFAccesosRes():
     return INTF_ACCESOS
  
 ##NUMERO DE HOGARES
-Hogares=pd.read_csv("https://raw.githubusercontent.com/sbermudezf/ComisionRegulacionComunicaciones/main/HOGARES.csv",delimiter=';')
+Hogares=pd.read_csv("https://raw.githubusercontent.com/postdatacrc/BateriadeIndicadores/main/HOGARES.csv",delimiter=';')
 Hogares.columns=[x.lower() for x in Hogares.columns]
 Hogares.id_municipio=Hogares.id_municipio.astype(str)
 Hogares.id_departamento=Hogares.id_departamento.astype(str)
