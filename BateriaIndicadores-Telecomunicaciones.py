@@ -575,7 +575,7 @@ st.markdown(r""" **<center><ins>Guía de uso de la batería de indicadores para 
 st.sidebar.markdown("""<b>Seleccione el indicador a calcular</b>""", unsafe_allow_html=True)
 
 select_mercado = st.sidebar.selectbox('Servicio',
-                                    ['Telefonía local','Telefonía móvil', 'Internet fijo','Internet móvil','Televisión por suscripción'])
+                                    ['Internet fijo','Telefonía local','Televisión por suscripción','Internet móvil','Telefonía móvil'])
                               
 #API 
 consulta_anno = '2017,2018,2019,2020,2021,2022,2023,2024,2025'
